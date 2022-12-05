@@ -1,0 +1,42 @@
+doctype html
+html(lang='es')
+  head
+    title Sitema S3
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="CodedThemes")
+    meta(name="author" content="MWConsultores")
+      //- Favicon icon
+    link(rel="icon" href="/favicon.jpg")
+    //- Google font
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet")
+    //- Required Fremwork
+    link(rel="stylesheet" type="text/css" href="/vendors/assets/css/bootstrap/css/bootstrap.min.css")
+    //- themify-icons line icon
+    link(rel="stylesheet" type="text/css" href="/vendors/assets/icon/themify-icons/themify-icons.css")
+    //- ico font
+    link(rel="stylesheet" type="text/css" href="/vendors/assets/icon/icofont/css/icofont.css")
+    //- Style.css
+    link(rel="stylesheet" type="text/css" href="/vendors/assets/css/style.css")
+    link(rel="stylesheet" type="text/css" href="/vendors/assets/css/jquery.mCustomScrollbar.css")
+    link(rel="stylesheet" type="text/css" href="/stylesheets/nav-logo.css")
+
+    block styles
+
+  body
+    include components/preloader.pug
+    block content
+  //- Required Jquery
+  script(type="text/javascript" src="/vendors/assets/js/jquery/jquery.min.js")
+  script(type="text/javascript" src="/vendors/assets/js/jquery-ui/jquery-ui.min.js")
+  script(type="text/javascript" src="/vendors/assets/js/popper.js/popper.min.js")
+  script(type="text/javascript" src="/vendors/assets/js/bootstrap/js/bootstrap.min.js")
+  //- jquery slimscroll js 
+  script(type="text/javascript" src="/vendors/assets/js/jquery-slimscroll/jquery.slimscroll.js")
+  //- modernizr js 
+  script(type="text/javascript" src="/vendors/assets/js/modernizr/modernizr.js")
+  script(type="text/javascript" src="/vendors/assets/js/modernizr/css-scrollbars.js")
+  script(type="text/javascript" src="/vendors/assets/js/common-pages.js")
+  script(src="/javascripts/sideBar.js") 
+  block scripts

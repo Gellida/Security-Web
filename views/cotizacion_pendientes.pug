@@ -1,0 +1,72 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body
+                                .page-wrapper
+                                    .page-body
+                                        .card.borderless-card
+                                            .card-block.primary-breadcrumb
+                                                .breadcrumb-header
+                                                    h3 Cotizaciones realizadas
+                                                .page-header-breadcrumb
+                                                    a(href="/cotizacion") Cotizar a un cliente
+                                        .card
+                                            .col-md-12
+                                                .row
+                                                    .table-responsive
+                                                        table.table.table-hover
+                                                            thead
+                                                                tr  
+                                                                    th Folio                                  
+                                                                    th Cliente                                         
+                                                                    th Sucursal                                                        
+                                                                    th Fecha de captura
+                                                                    th Total
+                                                                    th 
+                                                            tbody
+                                                                each cotizacion in cotizaciones
+                                                                    tr 
+                                                                        td 
+                                                                            a(href="/cotizacion/"+cotizacion.cotizacionId+"/pdfRender") #{cotizacion.getFolio()}
+                                                                        td #{cotizacion.cliente.name}
+                                                                        td #{cotizacion.sucursal.name} / #{cotizacion.sucursal.ubicacion}
+                                                                        td #{cotizacion.getFechaFormat()} 
+                                                                        td #{cotizacion.totalAcumulado()}
+                                                                        td 
+                                                                            button(class="btn btn-success" style="margin-right : 0.2rem" title="Aceptar cotización" data-toggle="tooltip" onclick="Aceptar('"+cotizacion.cotizacionId+"','"+cotizacion.getFolio()+"')")
+                                                                                i.ti-check
+                                                                            a(href="/cotizacion/" + cotizacion.cotizacionId +"/editar" class="btn btn-primary" style="margin-right : 0.2rem" title="Editar cotización" data-toggle="tooltip")
+                                                                                i.ti-pencil
+                                                                            button(class="btn btn-danger" title="Cancelar cotizacion" data-toggle="tooltip" onclick="Cancelar('"+cotizacion.cotizacionId+"','"+cotizacion.getFolio()+"')" )
+                                                                                i.ti-trash
+                                                                        
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- Cancelar y Aceptar Cotizaciones
+    script(src="/javascripts/cotizacion_listado.js") 

@@ -1,0 +1,2 @@
+
+SELECT idusua AS empleadoId, nombre AS name, paterno AS fatherLastName, materno as maternalLastName, celular as phoneNumber, correo AS email, nss AS numeroSeguroSocial, rfc AS rfc, fecnac AS fechaNacimiento, idpermiso AS permisos, idestatus AS status, feccap AS fechaContratacion, pass AS password, user_name as userName, sexo as sexo, curp as curp, estadocivil AS estadoCivil FROM tblc_usuario WHERE 

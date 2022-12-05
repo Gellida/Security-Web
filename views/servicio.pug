@@ -1,0 +1,107 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#servicioRegister
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card
+                                                    .card-header
+                                                        h3 Catálogo de servicios <span> Registrar un servicio nuevo
+                                                    .card-block.table-border-style
+                                                        .container.text-center
+                                                            .row
+                                                                .col-12.col-sm-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-light-bulb")
+                                                                        select(type="text" class="form-control" v-model="modalidad" placeholder="Tipo de Modalidad" title="Modalidad del servicio" data-toggle="tooltip")
+                                                                            option(value="Básico") Básico
+                                                                            option(value="Avanzado") Avanzado 
+                                                                            option(value="Avanzado con arma no letal") Avanzado con arma no letal
+                                                                            option(value="Avanzado letal") Avanzado letal
+                                                                .col-12.col-sm-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-alarm-clock")
+                                                                        input(type="text" class="form-control" v-model="tiempo_servicio" placeholder="Horario de servicio" title="Horario del servicio" data-toggle="tooltip")
+                                                                .col-12.col-sm-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-money")
+                                                                        input(type="text" class="form-control" v-model="costo_servicio" placeholder="Costo del servicio" title="Costo del servicio" data-toggle="tooltip")
+                                                                .col-12.col-sm-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="text" class="form-control" v-model="cantidad_elementos" placeholder="Elementos asignados" title="Cantidad de elementos" data-toggle="tooltip")
+                                                                .col-12
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-clip")
+                                                                        input(type="text" class="form-control" v-model="descripcion" placeholder="Descripción detallada" title="Descripción del servicio" data-toggle="tooltip")
+                                                    .card-header
+                                                        .container.text-center
+                                                            .row
+                                                                .col-12
+                                                                    .flex-column
+                                                                        button(class="btn btn-primary" v-on:click="sendData" style="width: 100%") crear servicio
+                                            .col-12
+                                                .row
+                                                    .col-12
+                                                        .card
+                                                            .card-header
+                                                                .breadcrumb-header
+                                                                    h3 Servicios <span> Listado de servicios disponibles
+                                                                    a(href="/servicio/pdfRender" class="btn btn-primary" style="width: 100%") Generar PDF del catálogo de servicios
+                                                            .card-block
+                                                                .table-responsive
+                                                                    table.table.table-hover
+                                                                        thead
+                                                                            tr  
+                                                                                th 
+                                                                                th Modalidad                                  
+                                                                                th Tiempo                                              
+                                                                                th Costo
+                                                                                th Elementos
+                                                                                th Descripción
+                                                                        tbody
+                                                                            tr(v-for="servicio in servicios")
+                                                                                th 
+                                                                                    button(class="btn btn-primary") 
+                                                                                        i.ti-pencil
+                                                                                td {{servicio.modalidad}}
+                                                                                td {{servicio.tiempo_servicio}}
+                                                                                td ${{servicio.costo_servicio}}
+                                                                                td {{servicio.cantidad_elementos}}
+                                                                                td {{servicio.descripcion}}
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/servicio.js")

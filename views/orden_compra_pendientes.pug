@@ -1,0 +1,71 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion
+                                .page-wrapper
+                                    .page-body
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Asignación  <span> Completa los pasos de verificación y validación para generar tu orden
+                                                 
+                                        .col-md-12
+                                            .row
+                                                .col-sm-4 
+                                                    .card
+                                                        .card-header
+                                                            .container.text-left
+                                                                h4 Cliente: AEXA
+                                                                    span(class="label label-primary") Folio : f00022
+                                                                    span Sucursal: S3 Tuxtla
+                                                                    span cotizacion # 2 
+                                                        .card-block
+                                                            .container
+                                                                .row 
+                                                                    .col-12
+                                                                        
+                                                                            .row(style="padding-bottom: 0.25rem")
+                                                                                .col-2  
+                                                                                    span(class="label label-warning") 4
+                                                                                .col-10 servicio avanzado: $10000
+                                                                    .col-12
+                                                                            .container.text-right
+                                                                            br
+                                                                            h5 Total : $ 10000
+                                                        .card-block
+                                                            .container
+                                                                .row 
+                                                                    .col-12  
+                                                                        a(href="/orden_compra" class="btn btn-primary" style="width : 100%" ) Entrar                  
+                                                                        
+
+
+                                                                        
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")

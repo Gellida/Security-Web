@@ -1,0 +1,122 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body
+                                .page-wrapper
+                                    .page-body#clienteRegister
+                                        .col-md-12
+                                            .card 
+                                                .card-header
+                                                    .container.text-left
+                                                        h3 Cliente <span> Datos personales del cliente
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                        .row
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-user")
+                                                                    input(type="text" class="form-control" placeholder="Nombre" title="Nombre" data-toggle="tooltip" v-model="clienteModel.name")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-map")
+                                                                    input(type="text" class="form-control" placeholder="Dirección" title="Dirección" data-toggle="tooltip" v-model="clienteModel.direccion")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-bag")
+                                                                    input(type="text" class="form-control" placeholder="RFC" title="RFC" data-toggle="tooltip" v-model="clienteModel.rfc")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-bag")
+                                                                    input(type="text" class="form-control" placeholder="persona del contacto" title="persona del contacto" data-toggle="tooltip" v-model="clienteModel.contacto_persona")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-bag")
+                                                                    input(type="text" class="form-control" placeholder="puesto" title="puesto" data-toggle="tooltip" v-model="clienteModel.puesto")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-mobile")
+                                                                    input(type="text" class="form-control" placeholder="Celular" title="Número celular" data-toggle="tooltip" v-model="clienteModel.phoneNumber")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-calendar")
+                                                                    input(type="text" class="form-control" placeholder="Email" title="Email" data-toggle="tooltip" v-model="clienteModel.email")
+                                                            .col-12.col-sm-6.col-lg-4
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-settings")
+                                                                    input(type="text" class="form-control" placeholder="Fecha de captura" title="feccap" data-toggle="tooltip" onfocus="(this.type='date')" onblur="(this.type='text')" v-model="clienteModel.feccap")
+                                                .card-header
+                                                    .container.text-right
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                button(class="btn btn-primary" style="width: 100%" v-on:click="registrarCliente") Registrar cliente            
+                                        .col-md-12
+                                            .card
+                                                .card-header
+                                                    .container.text-left
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                h3 Sucursal <span> Registrar las sucursales de un cliente
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                        .row
+                                                            .col-12.col-lg-6
+                                                                .input-group 
+                                                                    span(class="input-group-addon") 
+                                                                        i(class="ti-user")
+                                                                    select(name="concepto" class="form-control" placeholder="Nombre del cliente" title="Nombre del cliente" data-toggle="tooltip" v-model="sucursalModel.clienteId")
+                                                                        option(v-for="cliente in clientes" :value="cliente.clienteId")  {{cliente.name}}
+                                                            .col-12.col-lg-6
+                                                                .input-group 
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-id-badge")
+                                                                    input(type="text" class="form-control" placeholder="Nombre de la sucursal" title="Nombre de la sucursal" data-toggle="tooltip" v-model="sucursalModel.name")
+                                                            .col-12
+                                                                .input-group 
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-world")
+                                                                    input(type="text" class="form-control" placeholder="Ubicación" title="Ubicación" data-toggle="tooltip" v-model="sucursalModel.ubicacion")        
+                                                .card-header
+                                                    .container.text-right
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                button(class="btn btn-primary" style="width: 100%" v-on:click="registrarSucursal") Registrar Sucursal                                                
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+    script(src="/javascripts/sideBar.js")
+
+      //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+
+    
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cliente.js")

@@ -1,0 +1,53 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body
+                                .page-wrapper
+                                    .page-body 
+                                        .col-md-12
+                                            .card
+                                                .card-block.caption-breadcrumb
+                                                    .breadcrumb-header
+                                                    h5 Contrato
+                                                    |                                                     
+                                                    span Apartado donde se generan los contratos de la propia empresa, también dónde se suben contratos externos, en el caso de existir.
+                                                    |                                                 
+                                                    .page-header-breadcrumb
+                                                        ul.breadcrumb-title
+                                                            li.breadcrumb-item
+                                                            a(href='/dashboard')
+                                                                i.icofont.icofont-home
+                                                            |                                                         
+                                                            li.breadcrumb-item
+                                                            a(href='/contrato') / Contrato            
+block scripts
+      //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="javascripts/empleado.js") 

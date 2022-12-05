@@ -1,0 +1,75 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12.col-md-6.col-xl-4
+                                                .card.widget-card-1
+                                                    .card-block-small
+                                                        a(href="/empleado/listar")
+                                                           i.icofont.icofont-pie-chart.bg-c-blue.card1-icon
+                                                        span.text-c-blue.f-w-600 Empleados Activos
+                                                        h4 #{numOfEmpleados}
+                                                        div
+                                                            span(class="f-left m-t-10 text-muted")
+                                                                i(class="text-c-green f-16 icofont icofont m-r-10") 
+                                                                |Nómina pagada
+                                            .col-12.col-md-6.col-xl-4
+                                                .card.widget-card-1
+                                                    .card-block-small
+                                                        a(href="/cliente/adeudo")
+                                                           i.icofont.icofont-pie-chart.bg-c-blue.card1-icon
+                                                        span.text-c-blue.f-w-600 Clientes registrados
+                                                        h4 #{numOfClientes}
+                                                        div
+                                                            span(class="f-left m-t-10 text-muted")
+                                                                i(class="text-c-blue f-16 icofont icofont m-r-10") 
+                                                                |No hay clientes con adeudos
+                                            .col-12.col-md-6.col-xl-4
+                                                .card.widget-card-1
+                                                    .card-block-small
+                                                        a(href="/cotizacion/pendientes")
+                                                           i.icofont.icofont-pie-chart.bg-c-pink.card1-icon
+                                                        span.text-c-pink.f-w-600 Cotizaciones Pendientes
+                                                        h4 #{numOfCotizacionesPendientes}
+                                                        div
+                                                            span(class="f-left m-t-10 text-muted")
+                                                                i(class="text-c-pink f-16 icofont icofont-warning m-r-10") 
+                                                                |Cotizaciones sin aceptar
+                                        .row 
+                                            |<div class="col-md-12">
+                                            |    <div class="card">
+                                            |        <div class="card-header">
+                                            |            <h4>Ingresos</h4>
+                                            |            <div class="card-header-left ">
+                                            |        </div>
+                                            |        <div class="card-block">
+                                            |            <div id="statestics-chart" style="height:517px;"></div>
+                                            |        </div>
+                                            |    </div>
+                                            |</div>         
+block scripts
+    //- am chart 
+    script(src="vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="vendors/assets/js/script.js")
+    script(src="vendors/assets/js/SmoothScroll.js")
+    script(src="vendors/assets/js/pcoded.min.js")
+    script(src="vendors/assets/js/demo-12.js")
+    script(src="vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="javascripts/dashboard.js")
+    script(src="javascripts/empleado.js") 

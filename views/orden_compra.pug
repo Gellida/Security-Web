@@ -1,0 +1,148 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion
+                                .page-wrapper
+                                    .page-body
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Orden de compra <span> Generar orden de compra para una cotización 
+                                                    .page-header-breadcrumb
+                                                        a(href="/orden_compra_pendientes") 
+                                                     
+
+                                        
+                                        |<div class="col-md-12">
+                                        |    <div class="card add-task-card">
+                                        |        <div class="card-header">
+                                        |            <div class="card-header-left">
+                                        |                <h4>Validación </h4>
+                                        |            </div>
+                                        |        </div>
+                                                
+                                        |        <div class="card-block">
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                          <a href="orden_compra/verificar_ubicacion">Verificar ubicación</a> <span class="label bg-c-green m-l-10 f-10">Dirección</span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                        <a href="orden_compra/asignar_elementos">Asignar elementos</a> <span class="label bg-c-green m-l-10 f-10">Recursos Humanos</span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                       <a href="orden_compra/asignar_equipos">Asignar equipos</a> <span class="label bg-c-green m-l-10 f-10">Comercialización y equipos</span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                       <span><h6>Verificar precios <span class="label bg-c-green m-l-10 f-10">Contador </span></h6></span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                       <span><h6>Generar contrato <span class="label bg-c-green m-l-10 f-10">Juridico </span></h6></span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                       <span><h6>Generar orden de pago<span class="label bg-c-green m-l-10 f-10">Administración y cobranza </span></h6></span>
+                                        |                    </label>
+                                        |                </div>
+                                        |            </div>
+                                        |            <div class="to-do-list">
+                                        |                <div class="checkbox-fade fade-in-primary d-block">
+                                        |                    <label class="check-task d-block">
+                                        |                        <input type="checkbox" value="">
+                                        |                        <span class="cr">
+                                        |                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                                        |                        </span>
+                                        |                        <span><h6>Avisos<span class="label bg-c-green m-l-10 f-10">Responsable de avisos </span></h6></span>
+                                        |                        </label>
+                                        |                    </div>
+                                        |                </div>
+                                        |            </div>
+                                        |  
+                                        |   
+                                        |        </div>
+                                        |    </div>        
+                                        
+                                        .container
+                                            .row 
+                                                .col-12  
+                                                    a(href="/orden_compra" class="btn btn-primary" style="width : 100%" ) Crear nueva orden       
+                                                            
+                                                                
+                                           
+        
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cotizacion.js") 

@@ -1,0 +1,104 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#Gasto
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card 
+                                                    .card-header
+                                                        h3 Gastos <span> Registrar los gastos del departamento
+                                                    .card-block.table-border-style
+                                                        .container.text-center
+                                                            .col-12.col-sm-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-light-bulb")
+                                                                        select(type="text" class="form-control" v-model="sucursal" placeholder="Seleccionar sucursal" title="Sucursal" data-toggle="tooltip")
+                                                                            option(value="S3Tuxtla") S3 Tuxtla
+                                                                            option(value="S3Tapachula") S3 Tapachula
+                                                                            option(value="03Tuxtla") 03 Tuxtla
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-user
+                                                                    input(type="text" class="form-control" v-model="concepto" placeholder="gasto.concepto")
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-bag
+                                                                    input(type="text" class="form-control" v-model="monto" placeholder="monto")
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-mobile
+                                                                    input(type="date" class="form-control" v-model="feccap" placeholder="feccap")
+                                                    .card-header
+                                                        .container.text-right
+                                                            .col-xs-12 
+                                                                .flex-column
+                                                                        button(class="btn btn-primary" v-on:click="sendData") Registrar gasto
+                                                .card(v-for="Gasto in gastos")
+                                                    .card-block
+                                                        h4 Gasto
+                                                        .row 
+                                                            .col-sm-6.col-12 <label class="label label-primary">Concepto del gasto</label> : {{Gasto.concepto}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">monto </label> : {{Gasto.monto}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">fecha de captura</label> : {{Gasto.feccap}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">Persona que capturó</label> : {{Gasto.persona_captura}}
+                                            .col-6
+                                                .col
+                                                    .card(v-for="Gasto in gastos")
+                                                        .card-header
+                                                            .container.text-left
+                                                                .row
+                                                                    h4 Gasto                                                            
+                                                            .container.text-right
+                                                                .row                                                                  
+                                                                    span(class="label label-primary") Fecha : {{Gasto.feccap}}
+                                                            .container.text-left
+                                                                .row
+                                                                    span(class="label label-success") Sucursal: S3 Tuxtla
+                                                                
+                                                                    
+                                                        .card-block
+                                                            .container
+                                                                .row 
+                                                                    .col-12
+                                                                        .row(style="padding-bottom: 0.25rem")
+                                                                            .col-12 Concepto
+                                                                            .col-12 {{Gasto.concepto}}
+                                                                    .col-12
+                                                                        .row(style="padding-bottom: 0.25rem")
+                                                                            .container.text-right
+                                                                                span Monto : {{Gasto.monto}}              
+
+block scripts                           
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/gasto.js")

@@ -1,0 +1,88 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion_editar
+                                .page-wrapper
+                                    .page-body
+                                        input(type="hidden" id="cotizacionId" value=cotizacion.cotizacionId)
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Cotizacion 
+                                                        h5 Folio:#{cotizacion.getFolio()}<br>
+                                                        span Fecha de captura #{cotizacion.getFechaFormat()}
+                                                    .page-header-breadcrumb.text-right
+                                                        .col-12
+                                                            h3 Cliente: #{cliente.name} 
+                                                            h5 #{sucursal.name} #{sucursal.ubicacion} 
+                                                            
+                                        .col-12
+                                            .card
+                                                .card-header
+                                                        .container.text-left
+                                                            h3 Servicios <span> Servicios seleccionados en la cotización
+                                                .card-block
+                                                    .container.text-left
+                                                        .col-12
+                                                            each servicios in cotizacion.serviciosIds
+                                                                servicio-edit(inline-template servicio-id=servicios.servicio.servicioId, precio-cotizado=servicios.costoPorServicio(), cantidad-de-servicios=servicios.cantidadDeServicios v-on:servicio-actualizado="actualizarServicios" v-on:servicio-cancelado="cancelarServicio" v-on:servicio-restaurado="restaurarServicio")
+                                                                    .row
+                                                                        .col-12
+                                                                            h5(v-if="acvtive") #{servicios.servicio.modalidad} / #{servicios.servicio.descripcion} 
+                                                                            h5(v-else style="text-decoration-line: line-through") #{servicios.servicio.modalidad} / #{servicios.servicio.descripcion} 
+                                                                        .col-12(style="margin-top: 0.1rem")
+                                                                            .row   
+                                                                                .col-5
+                                                                                    .input-group
+                                                                                        span(class="input-group-addon")
+                                                                                            i(class="ti-money")
+                                                                                        input(type="text" class="form-control" placeholder="Precio unitario" title="Precio unitario" data-toggle="tooltip" v-model="precio")
+                                                                                .col-5
+                                                                                    .input-group
+                                                                                        span(class="input-group-addon")
+                                                                                            i(class="ti-shield")
+                                                                                        input(type="text" class="form-control" placeholder="Cantidad de servicios seleccionados" title="Cantidad de servicios seleccionados" data-toggle="tooltip" v-model="cantidad")
+                                                                                .col-2
+                                                                                    .input-group
+                                                                                        button(v-if="acvtive" class="btn btn-danger" v-on:click ="servicioCancelado" title="Eliminar servicio" data-toggle="tooltip")
+                                                                                            i.ti-trash
+                                                                                        button(v-else class="btn btn-success" v-on:click = "servicioRestaurado" title="Restaurar servicio" data-toggle="tooltip")
+                                                                                            i.ti-wand
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                        .row
+                                                            .col-12.input-group
+                                                                button(class="btn btn-primary" style="width : 100%" v-on:click="guardar") Actualizar cotización
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- Vue App
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cotizacion_editar.js")

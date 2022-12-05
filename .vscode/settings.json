@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.001,
+    "terminal.integrated.fastScrollSensitivity": 0.001,
+    "editor.mouseWheelScrollSensitivity": 1,
+    "editor.fastScrollSensitivity": 0.0001,
+    "workbench.editor.scrollToSwitchTabs": true,
+    "editor.smoothScrolling": true,
+    "workbench.list.fastScrollSensitivity": 0.001
+}

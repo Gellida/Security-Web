@@ -1,0 +1,83 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion
+                                .page-wrapper
+                                    .page-body
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Orden de compra <span> Completa el paso de asignación de elementos para proseguir con la orden 
+                                                    .page-header-breadcrumb
+                                                        a(href="/orden_compra_pendientes") 
+                                            .card
+                                                .card-header
+                                                    .container.text-left
+                                                        h4 Asginar elementos <span>Valida que existan elementos disponibles para poder asignarlos correctamente</span>
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                            .col-12
+                                                                h5 Cliente <br><br>
+                                                                    span.badge-primary.label AEXA
+                                                                <br>
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-location-pin")
+                                                                    select(type="text" class="form-control" v-model="sucursal" placeholder="Seleccionar sucursal" title="Seleccionar sucursal" data-toggle="tooltip")
+                                                                        option(value="") S3 Tuxtla
+                                                                        option(value="") S3 Tapachula 
+                                                                        option(value="") 03 Tuxtla
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-user")
+                                                                    select(type="text" class="form-control" v-model="asignar_elementos" placeholder="Asignar elementos" title="Asignar elementos" data-toggle="tooltip")
+                                                                        option(value="") 01-Francisco
+                                                                        option(value="") 02-Jose 
+                                                                        option(value="") 03-Pedro
+                                                                        option(value="") 04-Walter
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-clipboard")
+                                                                    input(type="text" class="form-control" v-model="descripcion" placeholder="Agregar indicaciones" title="Agregar indicaciones" data-toggle="tooltip")
+                                                .card-header
+                                                    .container.text-right
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                a(href="/orden_compra") 
+                                                                    button(class="btn btn-primary" style="width : 100%" v-on:click="addServices") Aceptar         
+                                                     
+
+                                       
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cotizacion.js") 

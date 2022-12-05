@@ -1,0 +1,74 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion
+                                .page-wrapper
+                                    .page-body
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Orden de compra <span> Completa el paso de validación de ubicación para proseguir con la orden 
+                                                    .page-header-breadcrumb
+                                                        a(href="/orden_compra_pendientes") 
+                                            .card
+                                                .card-header
+                                                    .container.text-left
+                                                        h4 Ubicación <span>Valida que la ubicación sea verídica</span>
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                            .col-12
+                                                                h5 Cliente <br><br>
+                                                                    span.badge-primary.label AEXA
+                                                                <br>
+                                                    .container.text-center
+                                                            .col-12
+                                                                h5 Ubicación <br><br>
+                                                                    span.badge-primary.label Instalaciones de terminal AEXA, 9a sur oriente no.2044 colonia camionera, Tuxtla Gutiérrez, Chiapas
+                                                                br
+                                                    .container.text-center
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i(class="ti-location-pin")
+                                                                    input(type="text" class="form-control" v-model="descripcion" placeholder="Agregar referencias" title="Agregar referencias" data-toggle="tooltip")
+                                                .card-header
+                                                    .container.text-right
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                button(class="btn btn-primary" style="width : 100%" v-on:click="addServices") Aceptar         
+                                                     
+
+                                       
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cotizacion.js") 

@@ -1,0 +1,73 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#VueEmpresa
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card 
+                                                    .card-header
+                                                        h3 Sucursales <span> Registrar los datos de cada sucursal
+                                                    .card-block.table-border-style
+                                                        .container.text-center
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-user
+                                                                    input(type="text" class="form-control" v-model="nombre" placeholder="Nombre")
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-bag
+                                                                    input(type="text" class="form-control" v-model="rfc" placeholder="RFC")
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-mobile
+                                                                    input(type="text" class="form-control" v-model="telefono" placeholder="Teléfono")
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon")
+                                                                        i.ti-home
+                                                                    input(type="text" class="form-control" v-model="domicilio" placeholder="Domicilio")
+                                                    .card-header
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                    button(class="btn btn-primary" v-on:click="sendData") Registrar sucursal
+                                                .card(v-for="Departamento in departamentos")
+                                                    .card-block
+                                                        h4 Sucursal
+                                                        .row 
+                                                            .col-sm-6.col-12 <label class="label label-primary">Nombre</label> {{Departamento.nombre}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">Celular</label> {{Departamento.telefono}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">Dirección</label> {{Departamento.domicilio}}
+                                                            .col-sm-6.col-12 <label class="label label-primary">RFC</label> {{Departamento.rfc}}
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/departamento.js")

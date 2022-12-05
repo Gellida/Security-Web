@@ -1,0 +1,64 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#empleadosView
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card
+                                                    .card-header
+                                                        h4 Empleados activos
+                                                    .card-block.table-border-style
+                                                        .table-responsive
+                                                            table.table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th Nombre Completo
+                                                                        th Nombre de usuario
+                                                                        th Opciones
+                                                                tbody
+                                                                    tr(v-for="(empleado, index) in empleados")
+                                                                        th(scope="row") {{index+1}}
+                                                                        td {{empleado.name+" "+empleado.fatherLastName+" "+empleado.motherLastName}}
+                                                                        td {{empleado.userName}}
+                                                                        td 
+                                                                            a(:href=" '/empleado/actualizar/' + empleado.empleadoId ")
+                                                                                button.btn.bg-primary(title="Actualizar los datos del empleado" data-toggle="tooltip")
+                                                                                    i.ti-pencil
+                                                                            a(v-on:click="despedir(empleado.empleadoId, index)" ) 
+                                                                                button.btn.bg-danger(title="Descartar empleado" data-toggle="tooltip")
+                                                                                    i.ti-trash
+                                                                            
+                                                                                
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+    script(src="/javascripts/empleado.js") 
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/empleados.js")

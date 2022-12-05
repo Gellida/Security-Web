@@ -1,0 +1,175 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#empresaUpdate
+                                input(type="hidden", value=idempresa id="idempresa")
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                            
+                                                //.card
+                                                    .card-header 
+                                                        .container
+                                                            .row
+                                                                .col-10
+                                                                    h4 Empresa
+                                                                    h5 {{ empresa.nombre}}
+                                                            .row 
+                                                                .col-4 
+                                                                    p CURP <label class="label label-success">{{empresa.regimenfiscal}}
+                                                                .col-4 
+                                                                    p RFC <label class="label label-success">{{empresa.rfc}}
+                                                                .col-4
+                                                                    p NSS <label class="label label-success">{{empresa.numeroSeguroSocial}}
+                                                .card
+                                                    .card-header
+                                                        .container.text-left
+                                                            h3 Datos de S3 <span> Datos globales de la empresa
+                                                    .card-block(style="padding-bottom: 0% !important")
+                                                        .container.text-center
+                                                            .row
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="Nombre comercial" title="Nombre" data-toggle="tooltip" v-model="nombre") 
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="Razón social" title="Razón social" data-toggle="tooltip" v-model="razon")
+                                                                
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="RFC" title="RFC" data-toggle="tooltip" v-model="globalrfc")
+                                                                .col-6.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="CURP" title="CURP" data-toggle="tooltip" v-model="curp")
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="Domicilio" title="Domicilio" data-toggle="tooltip" v-model="domicilio")
+                                                                .col-5.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-map-alt
+                                                                        input(type="text" class="form-control" placeholder="Colonia" title="Colonia" data-toggle="tooltip" v-model="colonia")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                        input(type="text" class="form-control" placeholder="No. Ext." title="Número exterior" data-toggle="tooltip" v-model="numext")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="No. Int." title="Número interior" data-toggle="tooltip" v-model="numint")
+                                                                .col-3.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="C.P." title="Código postal" data-toggle="tooltip" v-model="cp")
+                                                                
+                                                               
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="Estado" title="Estado" data-toggle="tooltip" v-model="estado")
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-email
+                                                                        input(type="text" class="form-control" placeholder="Municipio" title="Municipio" data-toggle="tooltip" v-model="municipio")
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-mobile
+                                                                        input(type="text" class="form-control" placeholder="Celular" title="Celular" data-toggle="tooltip" v-model="celular")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="Email" title="Email" data-toggle="tooltip" v-model="email")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="Sitio Web" title="Sitio Web" data-toggle="tooltip" v-model="sitioweb")
+                                                                .col-12.col-sm-12
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-pencil-alt2")
+                                                                        select(class="form-control" title="Tipo de empleado" data-toggle="tooltip" v-model="empleado")
+                                                                            option(value=1) GENERAL DE LEY PERSONALES MORALES
+                                                                            option(value=2) PERSONAS MORALES CON FINES NO LUCRATIVOS
+                                                                            option(value=3) SUELDOS Y SALARIOS E INGRESOS ASIMILADOS A SALARIOS
+                                                                            option(value=4) ARRENDAMIENTO
+                                                                            option(value=5) REGIMEN DE ENAJENACION O ADQUISICION DE BIENES
+                                                                            option(value=6) DEMAS INGRESOS
+                                                                            option(value=7) CONSOLIDACION
+                                                                            option(value=8) RESIDENTES EN EL EXTRANJERO SIN ESTABLECIMIENTO PERMANTENTE EN MEXICO
+                                                                            option(value=9) INGRESO POR DIVIDENDOS
+                                                                            option(value=10) PERSONAS FISICAS CON ACTIVIDADES EMPRESARIALES Y PROFESIONALES
+                                                                            option(value=11) INGRESOS POR INTERESES
+                                                                            option(value=12) REGIMEN DE LOS INGRESOS POR OBTENCION DE PREMIOS
+                                                                            option(value=13) SIN OLBIGACIONES FISCALES
+                                                                            option(value=14) SOCIEDADES COOPERATIVAS DE PRODUCCION QUE OPTAN POR DIFERIR SUS INGRESOS
+                                                                            option(value=15) INCORPORACION FISCAL
+                                                                            option(value=16) OPCIONAL PARA GRUPOS DE SOCIEDADES
+                                                                            option(value=17) COORDINADOS
+                                                                            option(value=18) HIDROCARBUROS
+                                                                            option(value=19) DE LOS REGIMENES FISCALES PREFERENTES Y DE LAS EMPRESAS MULTINACIONALES 
+                                                                            option(value=20) ENAJENACION DE ACCIONES EN BOLSA DE VALORES
+                                                              
+                                                                
+                                                    .card-header
+                                                        .container.text-right
+                                                            .col-12
+                                                                .col-xs-12 
+                                                                    .flex-column
+                                                                        button(class="btn btn-primary" v-on:click="sendData") Actualizar empresa         
+                                                
+                                                .card(v-for="Empresa in empresas")
+                                                    .card-block
+                                                        h5 Datos de la empresa
+                                                        .card-block
+                                                            .row 
+                                                                .col-6 Nombre : {{Empresa.nombre}}
+                                                                .col-6 Celular : {{Empresa.phoneNumber}}
+                                                                .col-6 curp : {{Empresa.curp}}
+                                                                .col-12 Dirección : {{Empresa.domicilio}}
+                                                                .col-6 razon: {{Empresa.razon}}
+                                                                .col-6 rfc: {{Empresa.rfc}}
+                                                                .col-6 curp: {{Empresa.curp}}
+                                                                .col-6 colonia: {{Empresa.colonia}}
+
+                    
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/empresa.js")

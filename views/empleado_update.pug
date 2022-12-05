@@ -1,0 +1,134 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#empleadoUpdate
+                                input(type="hidden", value=empleadoId id="empleadoId")
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card
+                                                    .card-header 
+                                                        .container
+                                                            .row
+                                                                .col-10
+                                                                    h4 Empleado
+                                                                    h5 {{ empleado.name + " " + empleado.fatherLastName + " " + empleado.motherLastName }}
+                                                                .col-2
+                                                                    a(class="btn btn-primary btn-outline-primary btn-icon" href="/empleado/listar" title="Regresar al listado de empleados" data-toggle="tooltip") 
+                                                                        i(class="ti-arrow-right")
+                                                            .row 
+                                                                .col-4 
+                                                                    p CURP <label class="label label-success">{{empleado.curp}}
+                                                                .col-4 
+                                                                    p RFC <label class="label label-success">{{empleado.rfc}}
+                                                                .col-4
+                                                                    p NSS <label class="label label-success">{{empleado.numeroSeguroSocial}}
+                                                    .card-block.text-center
+                                                        .container
+                                                            .row
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="text" class="form-control" placeholder="Nombre único de usuario" title="Nombre único de usuario" data-toggle="tooltip" v-model="empleado.userName")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-mobile")
+                                                                        input(type="text" class="form-control" placeholder="Número telefónico" title="Número telefónico" data-toggle="tooltip" v-model="empleado.phoneNumber")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-email")
+                                                                        input(type="text" class="form-control" placeholder="Correo electrónico" title="Correo electrónico" data-toggle="tooltip" v-model="empleado.email")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-pencil-alt2")
+                                                                        select(class="form-control" title="Tipo de empleado" data-toggle="tooltip" v-model="empleado.permisos")
+                                                                            option(value=1) Administrador general 
+                                                                            option(value=2) Gerente general
+                                                                            option(value=3) Gerente de empresa / sucursal
+                                                                            option(value=4) Recursos humanos
+                                                                            option(value=5) Jurídico
+                                                                            option(value=6) Auxiliares 
+                                                                            option(value=7) Elementos
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-user")
+                                                                        select(class="form-control" title="Estado civíl" data-toggle="tooltip" v-model="empleado.estadoCivil")
+                                                                            option(value="Soltero") Soltero
+                                                                            option(value="Casado") Casado
+                                                                            option(value="Divorciado") Divorciado
+                                                                            option(value="EnProceso") Separación en proceso judicial
+                                                                            option(value="Viudo") Viudo
+                                                                            option(value="Concubinato") Concubinato
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-world")
+                                                                        select(class="form-control" title="Sucursal asiganda" data-toggle="tooltip" v-model="empleadoSucursal")
+                                                                            option(:value="Sucursal.iddepartamento" v-for="Sucursal in sucursales") {{Sucursal.nombre}} 
+                                                    .card-header
+                                                        .container.text-left
+                                                            .col-xs-12 
+                                                                .flex-column
+                                                                    button(class="btn btn-primary" v-on:click ="sendData") Actualizar datos del empleado
+                                            .col-12 
+                                                .card
+                                                    .card-header 
+                                                        .container
+                                                            .row
+                                                                .col-12
+                                                                    h4 Empleado
+                                                                    h5 {{ empleado.name + " " + empleado.fatherLastName + " " + empleado.motherLastName }}
+                                                    .card-block.text-center
+                                                        .container
+                                                            .row
+                                                                .col-12.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="password" class="form-control" placeholder="Nueva contraseña" title="Restaurar contraseña" data-toggle="tooltip" v-model="newPassword")
+                                                                .col-12.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-mobile")
+                                                                        input(type="password" class="form-control" placeholder="Repetir nueva contraseña" title="Repetir contraseña" data-toggle="tooltip")
+                                                    .card-header
+                                                        .container.text-left
+                                                            .col-xs-12 
+                                                                .flex-column
+                                                                    button(class="btn btn-primary" v-on:click ="sendNewPass") Reasignar contraseña
+     
+block scripts                  
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/empleado_update.js")

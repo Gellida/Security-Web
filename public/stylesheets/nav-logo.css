@@ -1,0 +1,84 @@
+#img-logo-nav-bar {
+    max-height: 80px;
+    margin-left: calc(270px/4)
+}
+
+@media (max-width: 992px) {
+    #img-logo-nav-bar {
+        max-height: 80px;
+        margin-left: 0;
+    };
+}
+@media (max-width: 992px) {
+    #img-logo-nav-bar {
+        max-height: 80px;
+        margin-left: 0;
+        margin-top: -10px;
+    };
+}
+#login-bg {
+    background-image: linear-gradient(to top, rgba(251, 185, 0, 0.25), rgba(0, 0, 0, 0.5)), url(../../../images/wallpaper.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#card-login-bg{
+    background: linear-gradient(to bottom, rgba(251, 185, 0, 1) 29%, rgb(17, 17, 17) 30%, rgba(255, 255, 255, 1) 35%, rgba(255, 255, 255, 1) 100%)!important;
+}
+
+#logo-login {
+    max-width: 16rem;
+}
+
+.s3-btn {
+    background-color: #FBB900;
+    color: white;
+    border-radius: 10px;
+    border: solid 0.25rem white;
+
+}
+.s3-btn:hover {
+    background-color: #000;
+    border: solid 0.25rem #FBB900;
+    color: #FBB900;
+}
+.s3-input:focus{
+    background-color: #000;
+    border: solid 0.25rem #FBB900;
+    color: #FBB900;
+}
+
+.s3-btn:active {
+    background-color: #402A01 !important;
+}
+
+.s3-input {
+    font-size: 1.5rem;
+    background: transparent;
+    padding: 10px 10px 10px 10px;
+    color: #000!important;
+    border: #000 1.3px;
+    border-style: hidden hidden solid hidden;
+    transition: all 300ms ease;
+}
+.s3-input:active {
+    background: transparent;
+    border: #000 2px;
+    border-style: hidden hidden solid hidden;
+}
+.s3-input:focus {
+    background: transparent;
+    border: #000 2px;
+    border-style: hidden hidden solid hidden;
+}
+::placeholder{
+    color:  rgba(0, 0, 0, 0.5)!important;
+    opacity: unset;
+    font-size: 1rem;
+}
+

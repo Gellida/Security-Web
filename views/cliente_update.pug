@@ -1,0 +1,118 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#clienteUpdate
+                                input(type="hidden", value=clienteId id="clienteId")
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                                .card
+                                                    .card-block.caption-breadcrumb
+                                                        .breadcrumb-header 
+                                                            h3 Actualizar los datos de un cliente                                             
+                                                        .page-header-breadcrumb
+                                                            ul.breadcrumb-title
+                                                                li.breadcrumb-item
+                                                                a(href='/dashboard')
+                                                                    i.icofont.icofont-home
+                                                                |                                                         
+                                                                li.breadcrumb-item
+                                                                a(href='/cliente/listar') / Listado de clientes       
+                                                .card
+                                                    .card-header 
+                                                        .container
+                                                            .row
+                                                                .col-10
+                                                                    h3 {{cliente.name}} <span> Datos del cliente por actualizar
+                                                                            
+                                                    .card-block.text-center
+                                                        .container
+                                                            .row
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="text" class="form-control" placeholder="Nombre único de usuario" title="Nombre único de usuario" data-toggle="tooltip" v-model="cliente.name")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-mobile")
+                                                                        input(type="text" class="form-control" placeholder="Número telefónico" title="Número telefónico" data-toggle="tooltip" v-model="cliente.phoneNumber")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-pencil-alt")
+                                                                        input(type="text" class="form-control" placeholder="contacto_persona" title="contacto_persona" data-toggle="tooltip" v-model="cliente.contacto_persona")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-user")
+                                                                        input(type="text" class="form-control" placeholder="puesto" title="puesto" data-toggle="tooltip" v-model="cliente.puesto")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="text" class="form-control" placeholder="rfc" title="rfc" data-toggle="tooltip" v-model="cliente.rfc")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-id-badge")
+                                                                        input(type="text" class="form-control" placeholder="Fecha de captura" title="Fecha de captura" data-toggle="tooltip" v-model="cliente.feccap")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-location-arrow")
+                                                                        input(type="text" class="form-control" placeholder="direccion" title="direccion" data-toggle="tooltip" v-model="cliente.direccion")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-email")
+                                                                        input(type="text" class="form-control" placeholder="Correo electrónico" title="Correo electrónico" data-toggle="tooltip" v-model="cliente.email")
+                                                                .col-12.col-sm-6.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-pencil-alt2")
+                                                                        select(class="form-control" title="Estado del cliente" data-toggle="tooltip" v-model="cliente.idestatus")
+                                                                            option(value=1) Activo
+                                                                            option(value=2) Inactivo
+                                                                            option(value=3) En captura
+                                                                            option(value=4) No aprobado
+
+
+                                                    .card-header
+                                                        .container.text-right
+                                                            .col-xs-12 
+                                                                .flex-column
+                                                                    button(class="btn btn-primary" v-on:click ="sendData") Actualizar datos del cliente
+                                                    
+     
+block scripts                  
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cliente_update.js")

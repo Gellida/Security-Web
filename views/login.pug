@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+    section(class="login p-fixed d-flex text-center center" id="login-bg")
+        .container
+            .row
+                .col-sm-12
+                    div(class="login-card card-block auth-body mr-auto ml-auto")
+                        form(class="md-float-material")
+                            .auth-box#card-login-bg
+                                div(class="row m-b-20")
+                                    .col-md-12
+                                        img(src="images/fondoLogin.png" id="logo-login")
+                         
+                                .input-group
+                                    input(id="login-user-name" type="text" class="form-control s3-input"  placeholder="Usuario")
+                                    span(class="md-line")
+                                .input-group
+                                    input(id="login-password" type="password" class="form-control s3-input" placeholder="Contraseña")
+                                    span(class="md-line")
+                                div(class="row m-t-30")
+                                    .col-md-12
+                                        a(href="#")
+                                            button(id="login-btn" type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20 s3-btn") Entrar
+block scripts 
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    script(src="javascripts/login.js") 

@@ -1,0 +1,141 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#cotizacion
+                                .page-wrapper
+                                    .page-body
+                                        .col-md-12
+                                            .card.borderless-card
+                                                .card-block.primary-breadcrumb
+                                                    .breadcrumb-header
+                                                        h3 Cotización <span> Cotizar por servicios a un cliente 
+                                                    .page-header-breadcrumb
+                                                        a(href="/cotizacion/pendientes") Cotizaciones pendientes
+                                            .card
+                                                .card-header
+                                                    .container.text-left
+                                                        h4 Cliente <span class="form-control-static"> Selecciona el cliente y la sucursa</span>
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                        .row
+                                                            .col-12.col-sm-6
+                                                                .input-group 
+                                                                    span(class="input-group-addon") 
+                                                                        i(class="ti-user")
+                                                                    select(name="concepto" class="form-control" placeholder="Nombre del cliente" title="Nombre del cliente" data-toggle="tooltip" v-model="clineteIdSelected")
+                                                                        option(v-for="cliente in clientes" :value="cliente.clienteId")  {{cliente.name}}
+                                                            .col-12.col-sm-6
+                                                                .input-group 
+                                                                    span(class="input-group-addon") 
+                                                                        i(class="ti-world")
+                                                                    select(name="concepto" class="form-control" placeholder="Nombre de la sucursal" title="Nombre de la sucursal y su ubicación" data-toggle="tooltip" v-model="sucursalIdSelected")
+                                                                        option(v-for="sucursal in sucursales" :value="sucursal.sucursalId")  {{sucursal.name }}/{{sucursal.ubicacion}}
+             
+                                            .card
+                                                .card-header
+                                                    .container.text-left
+                                                        h4 Servicios <span>Selecciona el tipo de servicio</span>
+                                                .card-block(style="padding-bottom: 0% !important")
+                                                    .container.text-center
+                                                        .row
+                                                            .col-12
+                                                                .input-group
+                                                                    span(class="input-group-addon") 
+                                                                        i(class="ti-tag")
+                                                                    select(name="modalidad" class="form-control" placeholder="Servicio" title="Selecciona un servicio" data-toggle="tooltip" v-model="servicioSelected")
+                                                                        option(v-for="servicio in servicios" :value="servicio.servicioId") {{servicio.modalidad}} / {{servicio.descripcion}}
+                                                        .row
+                                                            .col-sm-3.col-6
+                                                                h5 Modalidad: <br><br>
+                                                                    span.badge-primary.label {{ servicioToAdd.modalidad }}
+                                                            .col-sm-3.col-6
+                                                                h5 Tiempo del servicio: <br><br>
+                                                                    span.badge-primary.label {{ servicioToAdd.tiempo_servicio }}
+                                                            .col-sm-3.col-6
+                                                                h5 Cantidad de elementos: <br><br>
+                                                                    span.badge-primary.label {{ servicioToAdd.cantidad_elementos }}
+                                                            .col-sm-3.col-6
+                                                                h5 Costo del servicio: <br><br> 
+                                                                    span.badge-primary.label {{ Number.parseInt(servicioToAdd.costo_servicio).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2) }}                                                    
+                                                .card-header
+                                                        .container.text-right
+                                                            .col-xs-12 
+                                                                .flex-column
+                                                                    button(class="btn btn-primary" style="width : 100%" v-on:click="addServices") agregar servicio                  
+                                                .card-block.table-border-style
+                                                    .col-12.col-sm-6-col-lg-4
+                                                        .table-responsive
+                                                            table.table.table-hover
+                                                                thead
+                                                                    tr  
+                                                                        th Descripción                                  
+                                                                        th Cantidad                                         
+                                                                        th Costo por servicio (con IVA)                                                  
+                                                                        th Costo total
+                                                                        th                                            
+                                                                tbody
+                                                                    tr(v-for="(servicio, index) in serviciosSeleccionados")     
+                                                                        td {{servicio.modalidad}} / {{servicio.descripcion}}                      
+                                                                        td {{servicio.cantidadDeServicios}}                                    
+                                                                        td {{ Number.parseInt(servicio.costo_servicio).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2) }}
+                                                                        td {{ (servicio.costo_servicio * servicio.cantidadDeServicios).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2) }}  
+                                                                        td  
+                                                                            button(class="btn btn-danger" v-on:click="remove(index)" title="Eliminar servicio" data-toggle="tooltip")
+                                                                                i.ti-trash                                                                                    
+                                                            
+
+                                                .card-block
+                                                    .container.text-right
+                                                        .row
+                                                            .col-sm-9
+                                                                label(for="col-form-label") SUBTOTAL
+                                                            .col-sm-3
+                                                                input(type="text" class="form-control" readonly :value="(subTotal - subTotal*0.16).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2)") 
+                                                        .row
+                                                            .col-sm-9
+                                                                label(for="col-form-label") IVA 16%
+                                                            .col-sm-3
+                                                                input(type="text" class="form-control" readonly :value="(subTotal*0.16).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2)") 
+                                                        .row
+                                                            .col-sm-9
+                                                                label(for="col-form-label") TOTAL POR MES
+                                                            .col-sm-3
+                                                                input(type="text" class="form-control" readonly :value="(subTotal).toLocaleString('en', {style: 'currency', currency: 'MXN'}).slice(2)") 
+                                                .card-header
+                                                    .container.text-right
+                                                        .col-xs-12 
+                                                            .flex-column
+                                                                button(class="btn btn-primary" v-on:click="guardar") Generar cotización
+
+
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    script(src="/javascripts/dashboard.js")
+
+    script(src="/javascripts/sideBar.js")
+
+    //- Sweet Alert
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/cotizacion.js") 

@@ -1,0 +1,153 @@
+extends layout 
+block content
+    div(id="pcoded" class="pcoded")
+        .pcoded-overlay-box
+        div(class="pcoded-container navbar-wrapper")
+            include components/navbar.pug
+            .pcoded-main-container
+                .pcoded-wrapper
+                    include components/sidebar.pug
+                    .pcoded-content
+                        .pcoded-inner-content
+                            .main-body#empresaUpdate
+                                input(type="hidden", value=idempresa id="idempresa")
+                                .page-wrapper
+                                    .page-body
+                                        .row 
+                                            .col-12
+                                         
+                                                .card
+                                                    .card-header
+                                                        .container.text-left
+                                                            h3 Datos de S3 <span> Datos globales de la empresa
+                                                    .card-block(style="padding-bottom: 0% !important")
+                                                        .container.text-center
+                                                            .row
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="Nombre comercial" title="Nombre" data-toggle="tooltip" v-model="empresa.nombre")  
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="Denominación social" title="Denominación social" data-toggle="tooltip" v-model="empresa.razon")
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-user
+                                                                        input(type="text" class="form-control" placeholder="RFC" title="RFC" data-toggle="tooltip" v-model="empresa.rfc")
+                                                      
+                                                                .col-6.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-user
+                                                                        input(type="text" class="form-control" placeholder="CURP" title="CURP" data-toggle="tooltip" v-model="empresa.curp")
+                                                                .col-8.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-home
+                                                                        input(type="text" class="form-control" placeholder="Domicilio" title="Domicilio" data-toggle="tooltip" v-model="empresa.domicilio")
+                                                                .col-5.col-lg-6
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="Colonia" title="Colonia" data-toggle="tooltip" v-model="empresa.colonia")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="No. Ext." title="Número exterior" data-toggle="tooltip" v-model="empresa.numext")
+                                                                .col-4.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="No. Int." title="Número interior" data-toggle="tooltip" v-model="empresa.numint")
+                                                                .col-3.col-lg-2
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="C.P." title="Código postal" data-toggle="tooltip" v-model="empresa.cp")
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="Municipio" title="Municipio" data-toggle="tooltip" v-model="empresa.municipio")
+                                                                .col-4.col-lg-3
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-location-pin
+                                                                        input(type="text" class="form-control" placeholder="Estado" title="Estado" data-toggle="tooltip" v-model="empresa.estado")
+                                                                .col-4.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i.ti-mobile
+                                                                        input(type="text" class="form-control" placeholder="Celular" title="Celular" data-toggle="tooltip" v-model="empresa.telefono")
+                                                                .col-4.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-email
+                                                                        input(type="text" class="form-control" placeholder="Email" title="Email" data-toggle="tooltip" v-model="empresa.email")
+                                                                .col-4.col-lg-4
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                           i.ti-direction
+                                                                        input(type="text" class="form-control" placeholder="Sitio Web" title="Sitio Web" data-toggle="tooltip" v-model="empresa.sitioweb")
+                                                                .col-12.col-sm-12
+                                                                    .input-group
+                                                                        span(class="input-group-addon")
+                                                                            i(class="ti-pencil-alt2")
+                                                                        select(class="form-control" :value="1" title="Régimen fiscal" data-toggle="tooltip" v-model="empresa.regimen")
+                                                                            option(value="1") GENERAL DE LEY PERSONALES MORALES
+                                                                            option(value="PERSONAS MORALES CON FINES NO LUCRATIVOS") PERSONAS MORALES CON FINES NO LUCRATIVOS
+                                                                            option(value="SUELDOS Y SALARIOS E INGRESOS ASIMILADOS A SALARIOS") SUELDOS Y SALARIOS E INGRESOS ASIMILADOS A SALARIOS
+                                                                            option(value="ARRENDAMIENTO") ARRENDAMIENTO
+                                                                            option(value="REGIMEN DE ENAJENACION O ADQUISICION DE BIENES") REGIMEN DE ENAJENACION O ADQUISICION DE BIENES
+                                                                            option(value="DEMAS INGRESOS") DEMAS INGRESOS
+                                                                            option(value="CONSOLIDACION") CONSOLIDACION
+                                                                            option(value="RESIDENTES EN EL EXTRANJERO SIN ESTABLECIMIENTO PERMANTENTE EN MEXICO") RESIDENTES EN EL EXTRANJERO SIN ESTABLECIMIENTO PERMANTENTE EN MEXICO
+                                                                            option(value="INGRESO POR DIVIDENDOS") INGRESO POR DIVIDENDOS
+                                                                            option(value="PERSONAS FISICAS CON ACTIVIDADES EMPRESARIALES Y PROFESIONALES") PERSONAS FISICAS CON ACTIVIDADES EMPRESARIALES Y PROFESIONALES
+                                                                            option(value="INGRESOS POR INTERESES") INGRESOS POR INTERESES
+                                                                            option(value="REGIMEN DE LOS INGRESOS POR OBTENCION DE PREMIOS") REGIMEN DE LOS INGRESOS POR OBTENCION DE PREMIOS
+                                                                            option(value="SIN OBLIGACIONES FISCALES") SIN OBLIGACIONES FISCALES
+                                                                            option(value="SOCIEDADES COOPERATIVAS DE PRODUCCION QUE OPTAN POR DIFERIR SUS INGRESOS") SOCIEDADES COOPERATIVAS DE PRODUCCION QUE OPTAN POR DIFERIR SUS INGRESOS
+                                                                            option(value="INCORPORACION FISCAL") INCORPORACION FISCAL
+                                                                            option(value="OPCIONAL PARA GRUPOS DE SOCIEDADES") OPCIONAL PARA GRUPOS DE SOCIEDADES
+                                                                            option(value="COORDINADOS") COORDINADOS
+                                                                            option(value="HIDROCARBUROS") HIDROCARBUROS
+                                                                            option(value="DE LOS REGIMENES FISCALES PREFERENTES Y DE LAS EMPRESAS MULTINACIONALES ") DE LOS REGIMENES FISCALES PREFERENTES Y DE LAS EMPRESAS MULTINACIONALES 
+                                                                            option(value="ENAJENACION DE ACCIONES EN BOLSA DE VALORES") ENAJENACION DE ACCIONES EN BOLSA DE VALORES
+                                                              
+                                                                
+                                                    .card-header
+                                                        .container.text-right
+                                                            .col-12
+                                                                .col-xs-12 
+                                                                    .flex-column
+                                                                        button(class="btn btn-primary"  v-on:click ="sendData") Actualizar empresa         
+                                                
+                                                
+
+                    
+block scripts
+    //- am chart 
+    script(src="/vendors/assets/pages/widget/amchart/amcharts.min.js")
+    script(src="/vendors/assets/pages/widget/amchart/serial.min.js")
+    //- Todo js
+    script(src="/vendors/assets/pages/todo/todo.js")
+    //- Custom js
+    script(src="/vendors/assets/pages/dashboard/custom-dashboard.js")
+    script(src="/vendors/assets/js/script.js")
+    script(src="/vendors/assets/js/SmoothScroll.js")
+    script(src="/vendors/assets/js/pcoded.min.js")
+    script(src="/vendors/assets/js/demo-12.js")
+    script(src="/vendors/assets/js/jquery.mCustomScrollbar.concat.min.js")
+    
+    //- SwEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    
+    //- VueJS Moduls
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js")
+    script(src="/javascripts/empresa.js")
